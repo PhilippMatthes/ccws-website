@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load markdown %}
+
+{% block body %}
+
+<div class="container mt-5 mb-5">
+
+  <section>
+    <h2>Was ist ☕💻.ws?</h2>
+    <div class="mt-2 justify">
+    {% spaceless %}
+    Kaffee, Code und Web Services ist eine Informationsseite, auf der verschiedene
+    technische Konzepte und Tutorials aus der modernen Software- und Webentwicklung
+    vorgestellt werden.
+    Das Konzept der Website ist, dass jeder an der Erstellung von Artikeln mitwirken kann.
+    Wir stellen ein <a href="https://github.com/coffee-code-ws/entries">GitHub Repository</a>
+    zur Verfügung, über welches neue Artikel verfasst werden können.
+    Möchten Sie an der Erstellung oder Verbesserung von Artikeln mitwirken? Schreiben Sie Ihren Artikel
+    einfach in Markdown und schicken Sie uns eine Pull-Request.
+    {% endspaceless %}
+    </div>
+  </section>
+
+  <section class="mt-5">
+    <div class="row">
+      {% for entry in entries %}
+      <div class="col-sm-6">
+        <div class="card border-color-scheme-responsive bg-color-scheme-responsive">
+          <div class="card-body">
+            <h5 class="card-title">{{ entry.title }}</h5>
+            <p class="card-text">{{ entry.description }}</p>
+            <a href="{% url 'entries:index' entry.slug %}" class="btn btn-primary">Weiterlesen</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+{% endblock %}

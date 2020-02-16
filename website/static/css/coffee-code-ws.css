@@ -1,0 +1,102 @@
+
+html {
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  min-height: 100%;
+
+  scroll-behavior: smooth;
+}
+
+.top-nav {
+  padding-bottom: 24rem;
+}
+
+.bg-color-scheme-responsive {
+  background-color: #ecf0f1;
+}
+
+.text-color-scheme-responsive {
+  color: #2f3542;
+}
+
+.border-color-scheme-responsive {
+  border-color: #2f3542;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bg-color-scheme-responsive {
+    background-color: #2f3542;
+  }
+
+  .text-color-scheme-responsive {
+    color: #ecf0f1;
+  }
+
+  .border-color-scheme-responsive {
+    border-color: #ecf0f1;
+  }
+}
+
+code {
+  color: #007bff !important;
+  font-size: 85%;
+  background-color: #ecf0f1 !important;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.polygon-top-left {
+  background: rgb(241,39,17);
+  background: linear-gradient(294deg, rgba(241,39,17,1) 0%, rgba(245,175,25,1) 100%);
+  clip-path: polygon(0 0, 100% 0,100% 50%,0 100%);
+  position: relative;
+}
+
+.polygon-top-right {
+  background: rgb(0,198,255);
+  background: linear-gradient(27deg, rgba(0,198,255,1) 0%, rgba(0,114,255,1) 100%);
+  clip-path: polygon(0 0, 100% 0,100% 100%,0 20%);
+  position: relative;
+}
+
+.polygon-bottom-left {
+  background: rgb(241,39,17);
+  background: linear-gradient(294deg, rgba(241,39,17,1) 0%, rgba(245,175,25,1) 100%);
+  clip-path: polygon(100% 100%, 0 100%, 0 50%,100% 0);
+  position: relative;
+}
+
+.polygon-bottom-right {
+  background: rgb(0,198,255);
+  background: linear-gradient(27deg, rgba(0,198,255,1) 0%, rgba(0,114,255,1) 100%);
+  clip-path: polygon(100% 100%, 0 100%,0 0, 100% 80%);
+  position: relative;
+}
+
+@media (min-width: 1200px) {
+  .container{
+    max-width: 800px;
+  }
+}
+
+.justify {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.markdown > p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.markdown > h1 {
+  margin-top: 4rem;
+}
+
+.markdown > h2 {
+  margin-top: 2rem;
+}
+
+.markdown > h3 {
+  margin-top: 1rem;
+}
