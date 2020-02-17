@@ -5,7 +5,7 @@ from django.urls import include, path
 
 from . import views
 
-import entries.urls as entries_urls
+from entries import urls as entries_urls
 
 app_name = 'entries'
 urlpatterns = [
