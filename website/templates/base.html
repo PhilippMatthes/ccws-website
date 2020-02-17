@@ -11,6 +11,7 @@
   <title>{% block title %}Kaffee, Code und Web Services{% endblock %}</title>
 
   <link rel="stylesheet" type="text/css" href="{% static 'vendor/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/css/termynal.css' %}">
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'css/coffee-code-ws.css' %}">
 
@@ -20,24 +21,13 @@
 <body class="bg-color-scheme-responsive text-color-scheme-responsive">
 
 <div class="polygon-top-left">
+<img class="coffee" src="{% static 'img/coffee.png' %}" alt="">
 <div class="polygon-top-right">
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark pt-4 top-nav">
-      <a class="navbar-brand mr-auto" href="/">☕💻.ws</a>
-      <ul class="navbar-nav mt-2 mt-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Kaffee, </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Code</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">und</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Web Services</a>
-          </li>
-        </ul>
+  <div class="container container-top-nav">
+    <nav class="navbar text-center top-nav pt-3 pl-0 pr-0 pb-3">
+      <code class="bg-color-scheme-responsive text-color-scheme-responsive p-2">
+        $ Kaffee, Code und Web Services
+      </code>
     </nav>
   </div>
 </div>
@@ -74,6 +64,9 @@
 </div>
 
 {% block extrabody %}{% endblock %}
+
+<script src="{% static 'vendor/js/termynal.js' %}"></script>
+<script>new Termynal('#header-termynal');</script>
 
 </body>
 </html>
