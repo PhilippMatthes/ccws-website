@@ -1,9 +1,11 @@
 from django.template.response import TemplateResponse
 
 from entries.models import Entry
+from djangostatistics.models import Interaction
 
 
 def index(request):
+    Interaction.objects.create(interaction_type='Index Page Visit')
     entries = Entry.objects.all()
     if request.method == 'GET':
         query = request.GET.get('query')

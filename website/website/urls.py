@@ -15,15 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls.static import static
+from django.conf.urls import url
 from django.conf import settings
 from django.urls import include, path
 
 from . import views
 
+from djangostatistics.admin import admin_site as statistics_admin_site
+
 from entries import urls as entries_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    url(r'^statistics/', statistics_admin_site.urls),
 
     path('', views.index),
 
