@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
 {% load markdown %}
+{% load highlight %}
 
 {% block body %}
 
 <div class="container mt-5 mb-5">
 
-  <section>
+  <section id="section-explanation">
     <h2>Was ist ☕💻.ws?</h2>
     <div class="mt-2 justify">
     {% spaceless %}
@@ -22,20 +23,46 @@
     </div>
   </section>
 
-  <section class="mt-5">
+  <section id="section-search" class="pt-5">
+    <form method="GET" action="#section-search">
+    <div class="input-group mb-3 mt-5">
+      <input type="text" class="form-control" placeholder="Suchbegriff" name="query"
+             value="{{ request.GET.query }}" aria-label="Suchbegriff">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button">Suchen</button>
+      </div>
+    </div>
+    </form>
+
+    {% if not entries %}
+      <h5>Für diese Auswahl gibt es noch keine Artikel.</h5>
+    {% else %}
     <div class="row">
       {% for entry in entries %}
       <div class="col-sm-6">
-        <div class="card border-color-scheme-responsive bg-color-scheme-responsive">
+        <div class="card mt-4 border-color-scheme-responsive bg-color-scheme-responsive">
           <div class="card-body">
-            <h5 class="card-title">{{ entry.title }}</h5>
-            <p class="card-text">{{ entry.description }}</p>
+            <h5 class="card-title">
+              {% if request.GET.query %}
+                {{ entry.title|highlight:request.GET.query }}
+              {% else %}
+                {{ entry.title }}
+              {% endif %}
+            </h5>
+            <p class="card-text">
+              {% if request.GET.query %}
+                {{ entry.description|highlight:request.GET.query }}
+              {% else %}
+                {{ entry.description }}
+              {% endif %}
+            </p>
             <a href="{% url 'entries:index' entry.slug %}" class="btn btn-primary">Weiterlesen</a>
           </div>
         </div>
       </div>
       {% endfor %}
     </div>
+    {% endif %}
   </section>
 </div>
 

@@ -61,6 +61,7 @@ TEMPLATES = [
             ],
             'libraries':{
                 'markdown': 'website.templatetags.markdown',
+                'highlight': 'website.templatetags.highlight',
             }
         },
     },

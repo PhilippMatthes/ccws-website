@@ -16,10 +16,6 @@ html {
   margin-bottom: 16rem;
 }
 
-.top-nav > code {
-  width: 100%;
-}
-
 .bg-color-scheme-responsive {
   background-color: #ecf0f1;
 }
@@ -42,7 +38,7 @@ html {
   padding: 0.5rem;
 }
 
-code {
+code, .highlighted {
   background-color: #f4f8f9;
   border-radius: 0.5rem;
   padding: 2px;
@@ -72,12 +68,13 @@ code {
     padding: 0.5rem;
   }
 
-  code {
+  code, .highlighted {
     background-color: #272d3a;
     border-radius: 0.5rem;
     padding: 2px;
     color: #007bff;
   }
+
 }
 
 .coffee-container {
