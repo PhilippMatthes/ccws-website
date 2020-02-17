@@ -5,6 +5,7 @@ html {
   min-height: 100%;
 
   scroll-behavior: smooth;
+  word-wrap: break-word;
 }
 
 .container-top-nav {
@@ -31,6 +32,23 @@ html {
   border-color: #2f3542;
 }
 
+.codehilite {
+  background-color: #f4f8f9;
+  border-radius: 0.5rem;
+  overflow: auto;
+}
+
+.codehilite pre {
+  padding: 0.5rem;
+}
+
+code {
+  background-color: #f4f8f9;
+  border-radius: 0.5rem;
+  padding: 2px;
+  color: #007bff;
+}
+
 @media (prefers-color-scheme: dark) {
   .bg-color-scheme-responsive {
     background-color: #2f3542;
@@ -43,14 +61,23 @@ html {
   .border-color-scheme-responsive {
     border-color: #ecf0f1;
   }
-}
 
-code {
-  font-size: 85%;
-  background-color: #ecf0f1;
-  padding: 2px;
-  border-radius: 5px;
-  overflow: auto;
+  .codehilite {
+    background-color: #272d3a;
+    border-radius: 0.5rem;
+    overflow: auto;
+  }
+
+  .codehilite pre {
+    padding: 0.5rem;
+  }
+
+  code {
+    background-color: #272d3a;
+    border-radius: 0.5rem;
+    padding: 2px;
+    color: #007bff;
+  }
 }
 
 .coffee-container {

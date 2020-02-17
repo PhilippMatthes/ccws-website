@@ -11,8 +11,8 @@
   <title>{% block title %}Kaffee, Code und Web Services{% endblock %}</title>
 
   <link rel="stylesheet" type="text/css" href="{% static 'vendor/css/bootstrap.min.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'vendor/css/termynal.css' %}">
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/css/pygmentize.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/coffee-code-ws.css' %}">
 
   {% block extrahead %}{% endblock %}
@@ -64,9 +64,6 @@
 </div>
 
 {% block extrabody %}{% endblock %}
-
-<script src="{% static 'vendor/js/termynal.js' %}"></script>
-<script>new Termynal('#header-termynal');</script>
 
 </body>
 </html>

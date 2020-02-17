@@ -42,7 +42,8 @@ ALLOWED_TAGS = [
     'strong',
     'em',
     'a',
-    'img'
+    'img',
+    'div'
 ]
 
 """
@@ -51,8 +52,10 @@ tags and the src, title and alt attributes for <img> tags. Any other attribute
 will be stripped from its tag.
 """
 ALLOWED_ATTRIBUTES = {
+    '*': ['class', 'id'],
     'a': ['href', 'title'],
-    'img': ['src', 'title', 'alt']
+    'img': ['src', 'title', 'alt'],
+    'code': ['*'],
 }
 
 """
@@ -76,17 +79,11 @@ convert = Markdown(output_format="html5", extensions=[
     "markdown.extensions.smarty",
     "markdown.extensions.fenced_code",
     "markdown.extensions.tables",
-    CodeHiliteExtension(use_pygments=False),
+    CodeHiliteExtension(),
 ]).convert
 
 
 @register.filter(is_safe=True)
 @stringfilter
 def markdown(value):
-    return mark_safe(bleach.clean(
-        convert(value),
-        tags=ALLOWED_TAGS,
-        styles=ALLOWED_STYLES,
-        attributes=ALLOWED_ATTRIBUTES,
-        protocols=ALLOWED_PROTOCOLS
-    ))
+    return mark_safe(convert(value))
