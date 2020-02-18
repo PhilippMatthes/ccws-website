@@ -4,19 +4,11 @@
 {% load highlight %}
 
 {% block header %}
-<h2>Willkommen auf ☕💻.ws!</h2>
-<div class="mt-2 justify">
-{% spaceless %}
-Kaffee, Code und Web Services ist eine Informationsseite, auf der verschiedene
-technische Konzepte und Tutorials aus der modernen Software- und Webentwicklung
-vorgestellt werden.
-Das Konzept der Website ist, dass jeder an der Erstellung von Artikeln mitwirken kann.
-Wir stellen ein <a class="text-white" href="https://github.com/coffee-code-ws/entries">GitHub Repository</a>
-zur Verfügung, über welches neue Artikel verfasst werden können.
-Möchten Sie an der Erstellung oder Verbesserung von Artikeln mitwirken? Schreiben Sie Ihren Artikel
-einfach in Markdown und schicken Sie uns eine Pull-Request.
-{% endspaceless %}
-</div>
+<h1>Welcome to ☕💻.ws!</h1>
+<p class="lead text-light">
+  Coffee, Code and Web Services is a German-English blog for specialist
+  articles on the topic of web and software development.
+</p>
 {% endblock %}
 
 {% block body %}
@@ -26,16 +18,16 @@ einfach in Markdown und schicken Sie uns eine Pull-Request.
   <section id="section-search" class="pt-5">
     <form method="GET" action="#section-search">
     <div class="input-group mb-3 mt-5">
-      <input type="text" class="form-control" placeholder="Suchbegriff" name="query"
-             value="{{ request.GET.query }}" aria-label="Suchbegriff">
+      <input type="text" class="form-control" placeholder="Search for blog entries" name="query"
+             value="{{ request.GET.query }}" aria-label="Search for blog entries">
       <div class="input-group-append">
-        <button class="btn btn-primary" type="button">Suchen</button>
+        <button class="btn btn-primary" type="button">Search</button>
       </div>
     </div>
     </form>
 
     {% if not entries %}
-      <h5>Für diese Auswahl gibt es noch keine Artikel.</h5>
+      <h5>There is no article yet in this section.</h5>
     {% else %}
     <div class="row">
       {% for entry in entries %}
@@ -56,7 +48,7 @@ einfach in Markdown und schicken Sie uns eine Pull-Request.
                 {{ entry.description }}
               {% endif %}
             </p>
-            <a href="{% url 'entries:index' entry.slug %}" class="btn btn-primary">Weiterlesen</a>
+            <a href="{% url 'entries:index' entry.slug %}" class="btn btn-primary">Read article</a>
           </div>
         </div>
       </div>
