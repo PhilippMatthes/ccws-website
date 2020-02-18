@@ -21,19 +21,42 @@
 <body class="bg-color-scheme-responsive text-color-scheme-responsive">
 
 <div class="polygon-top-left">
-<img class="coffee" src="{% static 'img/coffee.png' %}" alt="">
-<div class="polygon-top-right">
-  <div class="container container-top-nav">
-    <nav class="top-nav">
-    <h1 class="pt-5 text-center text-light">
-      ☕💻.ws
-    </h1>
-    <h5 class="pb-5 text-center text-light">
-      Kaffee, Code und Web Services
-    </h5>
+  <div class="page-nav-container container">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false" aria-label="Navigation umschalten">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="/">☕💻.ws</a>
+
+      <div class="collapse navbar-collapse" id="navbar-toggler">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" target="_blank" href="https://philippmatth.es/">Impressum</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" target="_blank" href="https://github.com/coffee-code-ws/">Mitmachen</a>
+          </li>
+        </ul>
+        <form method="GET" action="/#section-search" class="form-inline my-2 my-lg-0">
+          <div class="input-group">
+            <input id="top-nav-bar-input" type="text" class="form-control bg-transparent text-white border.white"
+                   placeholder="Suchbegriff" name="query" value="{{ request.GET.query }}" aria-label="Suchbegriff">
+            <div class="input-group-append">
+              <button class="btn btn-outline-light" type="button">Suchen</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </nav>
   </div>
 </div>
+
+<div class="container">
+  <div class="polygon-top-right">
+    <div class="text-light header-container">
+      {% block header %}{% endblock %}
+    </div>
+  </div>
 </div>
 
 {% if messages %}
@@ -67,6 +90,9 @@
 </div>
 
 {% block extrabody %}{% endblock %}
+
+<script src="{% static 'vendor/js/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/js/bootstrap.min.js' %}"></script>
 
 </body>
 </html>

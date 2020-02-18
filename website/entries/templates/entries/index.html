@@ -2,14 +2,13 @@
 
 {% load markdown %}
 
+{% block header %}
+<h1>{{ entry.title }}</h1>
+<p class="lead text-light">{{ entry.description }}</p>
+{% endblock %}
+
 {% block body %}
-
 <div class="container mt-5">
-
-<div class="mt-5 mb-5">
-  <h1>{{ entry.title }}</h1>
-  <p class="lead text-muted">{{ entry.description }}</p>
-</div>
 
 {% if entry %}
   <div class="markdown">
@@ -18,5 +17,4 @@
 {% endif %}
 
 </div>
-
 {% endblock %}

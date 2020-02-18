@@ -8,12 +8,47 @@ html {
   word-wrap: break-word;
 }
 
-.container-top-nav {
-  padding-bottom: 24rem;
+#top-nav-bar-input::placeholder {
+  color: rgba(255,255,255,.5);
 }
 
-.top-nav {
-  margin-bottom: 16rem;
+#top-nav-bar-input::-ms-input-placeholder {
+  color: rgba(255,255,255,.5);
+}
+
+.page-nav-container {
+  padding-top: 12rem;
+  padding-bottom: 18rem;
+}
+
+.header-container {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 2rem;
+}
+
+.polygon-top-left {
+  background: rgb(241,39,17);
+  background: linear-gradient(294deg, rgba(241,39,17,1) 0%, rgba(245,175,25,1) 100%);
+  transform: skewY(8deg);
+  margin-top: -10rem;
+}
+
+.polygon-top-left > * {
+  transform: skewY(-8deg);
+}
+
+.polygon-top-right {
+  background: rgb(0,198,255);
+  background: linear-gradient(27deg, rgba(0,198,255,1) 0%, rgba(0,114,255,1) 100%);
+  transform: skewY(-8deg);
+  margin-top: -12rem;
+}
+
+.polygon-top-right > * {
+  transform: skewY(0deg);
 }
 
 .bg-color-scheme-responsive {
@@ -75,44 +110,6 @@ code, .highlighted {
     color: #007bff;
   }
 
-}
-
-.coffee-container {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  height: 24rem;
-  z-index: 1;
-  clip-path: polygon(0 0, 100% 0,100% 100%,0 20%);
-  -webkit-clip-path: polygon(0 0, 100% 0,100% 100%,0 20%);
-}
-
-.coffee {
-  position: absolute;
-  max-height: 100%;
-  max-width: 100%;
-  left: -4rem;
-  top: 10rem;
-  bottom: -2rem;
-  z-index: 3;
-}
-
-.polygon-top-left {
-  background: rgb(241,39,17);
-  background: linear-gradient(294deg, rgba(241,39,17,1) 0%, rgba(245,175,25,1) 100%);
-  clip-path: polygon(0 0, 100% 0,100% 50%,0 100%);
-  -webkit-clip-path: polygon(0 0, 100% 0,100% 50%,0 100%);
-  position: relative;
-}
-
-.polygon-top-right {
-  background: rgb(0,198,255);
-  background: linear-gradient(27deg, rgba(0,198,255,1) 0%, rgba(0,114,255,1) 100%);
-  clip-path: polygon(0 0, 100% 0,100% 100%,0 20%);
-  -webkit-clip-path: polygon(0 0, 100% 0,100% 100%,0 20%);
-  position: relative;
 }
 
 .polygon-bottom-left {
