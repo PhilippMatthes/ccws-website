@@ -65,7 +65,7 @@ def get_entries(request):
         raise Http404()
 
     entries = Entry.objects \
-        .order_by('updated')[:limit]
+        .order_by('-updated')[:limit]
 
     response = JsonResponse({
         'limit': limit,
