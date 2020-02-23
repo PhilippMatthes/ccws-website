@@ -10,6 +10,7 @@ class Entry(models.Model):
     markdown = models.TextField()
 
     # optional fields
+    authors = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to="images", null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 

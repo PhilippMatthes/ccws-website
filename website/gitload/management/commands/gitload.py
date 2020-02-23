@@ -18,11 +18,13 @@ class Command(BaseCommand):
         entry_slug = entry_meta['slug']
         entry_title = entry_meta['title']
         entry_description = entry_meta['description']
+        entry_authors = entry_meta.get('authors')
 
         Entry.objects.update_or_create(slug=entry_slug, defaults={
             'markdown': entry_markdown,
             'title': entry_title,
-            'description': entry_description
+            'description': entry_description,
+            'authors': entry_authors
         })
 
 

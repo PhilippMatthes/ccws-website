@@ -33,6 +33,7 @@ INSTALLED_APPS = [
 
     'gitload',
     'entries',
+    'api',
 ]
 
 MIDDLEWARE = [

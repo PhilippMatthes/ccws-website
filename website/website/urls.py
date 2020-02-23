@@ -24,6 +24,7 @@ from . import views
 from djangostatistics.admin import admin_site as statistics_admin_site
 
 from entries import urls as entries_urls
+from api import urls as api_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,6 +34,7 @@ urlpatterns = [
     path('', views.index),
 
     path('entries/', include(entries_urls)),
+    path('api/', include(api_urls)),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
