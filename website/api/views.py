@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.forms import model_to_dict
 from django.http import Http404, JsonResponse
 from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
 
 from entries.models import Entry
 from djangostatistics.models import Interaction
@@ -53,6 +54,7 @@ def get_optional_bool(key_name: str, data: dict) -> Optional[bool]:
     )
 
 
+@csrf_exempt
 def get_entries(request):
     Interaction.objects.create(interaction_type='GET Entries Lazy API Access')
     if request.method != 'GET':
@@ -65,8 +67,12 @@ def get_entries(request):
     entries = Entry.objects \
         .order_by('updated')[:limit]
 
-    return JsonResponse({
+    response = JsonResponse({
         'limit': limit,
         'entries': json.loads(serializers.serialize('json', entries))
     })
+
+    response["Access-Control-Allow-Origin"] = "*"
+
+    return response
 
