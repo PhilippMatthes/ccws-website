@@ -11,6 +11,7 @@ class Entry(models.Model):
 
     # optional fields
     authors = models.TextField(null=True, blank=True)
+    tags = models.TextField(max_length=200, null=True, blank=True)
     image = models.ImageField(upload_to="images", null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 

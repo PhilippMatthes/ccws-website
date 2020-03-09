@@ -2,6 +2,12 @@
 
 {% load markdown %}
 
+{% block title %}{{entry.title}}{% endblock %}
+{% block description %}{{entry.description}}{% endblock %}
+
+{% if entry.author %}{% block author %}{{entry.author}}{% endblock %}{% endif %}
+{% if entry.tags %}{% block tags %}{{entry.tags}}{% endblock %}{% endif %}
+
 {% block header %}
 <h1>{{ entry.title }}</h1>
 <p class="lead text-light">{{ entry.description }}</p>

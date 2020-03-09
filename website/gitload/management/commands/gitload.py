@@ -51,12 +51,14 @@ class Command(BaseCommand):
             entry_title = entry_meta['title']
             entry_description = entry_meta['description']
             entry_authors = entry_meta.get('authors')
+            entry_tags = entry_meta.get('tags')
 
             _, was_created = Entry.objects.update_or_create(slug=entry_slug, defaults={
                 'markdown': entry_markdown,
                 'title': entry_title,
                 'description': entry_description,
-                'authors': entry_authors
+                'authors': entry_authors,
+                'tags': entry_tags,
             })
 
             print(f'Entry "{entry_title}" {"created" if was_created else "updated"}.')
