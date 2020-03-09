@@ -124,4 +124,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 GITLOAD_URL = 'https://github.com/coffee-code-ws/entries'
 GITLOAD_BRANCH = 'master'
+
 REPOSITORY_ROOT = str(Path(MEDIA_ROOT) / 'repository')

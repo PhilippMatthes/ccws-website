@@ -1,13 +1,31 @@
+import re
+from urllib.parse import unquote
+from os.path import join
+
+from django.conf import settings
 from django.template.response import TemplateResponse
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
+from django.views.static import serve
 
 from entries.models import Entry
 from djangostatistics.models import Interaction
 
 
-def index(request, entry_slug):
-    entry = get_object_or_404(Entry, slug=entry_slug)
+def index(request, slug):
+    entry = get_object_or_404(Entry, slug=slug)
     Interaction.objects.create(interaction_type=f'Read Entry {entry.title}')
     return TemplateResponse(request, "entries/index.html", {
         "entry": entry
     })
+
+
+def serve_attachment(request, slug, path):
+    if re.search('^(images|attachments)/', path) is None:
+        raise PermissionDenied
+
+    if '..' in unquote(path):
+        raise PermissionDenied
+
+    filesystem_path = join(slug, path)
+    return serve(request, filesystem_path, settings.REPOSITORY_ROOT)
