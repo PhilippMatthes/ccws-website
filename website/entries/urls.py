@@ -7,6 +7,7 @@ from . import views
 
 from entries import urls as entries_urls
 
+
 app_name = 'entries'
 urlpatterns = [
     url(r'^(?P<slug>[-\w]+)/$', views.index, name='index'),

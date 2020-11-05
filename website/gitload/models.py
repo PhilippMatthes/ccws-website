@@ -1,19 +1,21 @@
 from django.db import models
 from django.utils.crypto import get_random_string
 
-"""
-Generate a random token value for the token creation.
-"""
+
 def generate_token_value():
+    """
+    Generate a random token value for the token creation.
+    """
     return get_random_string(length=64)
 
 
-"""
-A token used for the continuous integration authentication.
-
-The token can be easily created via the admin interface.
-"""
 class GitloadToken(models.Model):
+    """
+    A token used for the continuous integration authentication.
+
+    The token can be easily created via the admin interface.
+    """
+
     value = models.TextField(
         default=generate_token_value,
         editable=False,

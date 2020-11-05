@@ -12,16 +12,16 @@ from entries.models import Entry
 
 
 
-"""View a specific blog entry."""
 def index(request, slug):
+    """Return a view for a specific blog entry."""
     entry = get_object_or_404(Entry, slug=slug)
     return TemplateResponse(request, "entries/index.html", {
         "entry": entry
     })
 
 
-"""Serve an attachment for a blog entry."""
 def serve_attachment(request, slug, path):
+    """Serve an attachment for a blog entry."""
     if re.search('^(images|attachments)/', path) is None:
         raise PermissionDenied
 

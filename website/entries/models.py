@@ -1,3 +1,5 @@
+import math
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -17,3 +19,15 @@ class Entry(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    @property
+    def tags_list(self):
+        """The entry tags, split into a list."""
+        return self.tags.split(',')
+
+    @property
+    def minutes_to_read(self):
+        """Compute an approximate read time by the word count."""
+        avg_words_per_minute = 240 # average english reader
+        num_words = len(self.markdown.split())
+        return math.ceil(num_words / avg_words_per_minute)

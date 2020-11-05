@@ -3,13 +3,13 @@ from django.template.response import TemplateResponse
 from entries.models import Entry
 
 
-"""
-Serve a homepage view with the most relevant entries.
-
-Entries can be filtered by a search query.
-"""
 def index(request):
-    entries = Entry.objects.all()
+    """
+    Serve a homepage view with the most relevant entries.
+
+    Entries can be filtered by a search query.
+    """
+    entries = Entry.objects.order_by('-created')
     if request.method == 'GET':
         query = request.GET.get('query')
         if isinstance(query, str) and query:

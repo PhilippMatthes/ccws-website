@@ -10,27 +10,27 @@ from django.views.decorators.csrf import csrf_exempt
 from gitload.models import GitloadToken
 
 
-"""
-Call the gitload command asynchronously.
-
-Use the huey task queue for this.
-"""
 @db_task()
 def call_gitload_async():
+    """
+    Call the gitload command asynchronously.
+
+    Use the huey task queue for this.
+    """
     call_command('gitload')
 
 
-"""
-A json endpoint view to trigger a gitload.
-
-This endpoint is used by the continuous publishing
-workflow in the entries repository. The access to
-this endpoint requires the caller to pass a valid
-token value, which has to be created via the
-admin interface. The gitload is called asynchronously.
-"""
 @csrf_exempt
 def trigger_gitload(request):
+    """
+    A json endpoint view to trigger a gitload.
+
+    This endpoint is used by the continuous publishing
+    workflow in the entries repository. The access to
+    this endpoint requires the caller to pass a valid
+    token value, which has to be created via the
+    admin interface. The gitload is called asynchronously.
+    """
     if request.method != 'POST':
         raise Http404
     token_value = request.POST.get('token_value')

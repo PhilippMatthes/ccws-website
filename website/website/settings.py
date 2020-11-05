@@ -62,8 +62,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'libraries':{
-                'markdown': 'website.templatetags.markdown',
+            'libraries': {
+                'markdown': 'entries.templatetags.markdown',
                 'highlight': 'website.templatetags.highlight',
             }
         },
