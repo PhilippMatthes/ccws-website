@@ -10,5 +10,9 @@ from entries import urls as entries_urls
 app_name = 'entries'
 urlpatterns = [
     url(r'^(?P<slug>[-\w]+)/$', views.index, name='index'),
-    url(r'^(?P<slug>[-\w]+)/(?P<path>.*)$', views.serve_attachment, name='serve_attachment'),
+    url(
+        r'^(?P<slug>[-\w]+)/(?P<path>.*)$',
+        views.serve_attachment,
+        name='serve_attachment'
+    ),
 ]

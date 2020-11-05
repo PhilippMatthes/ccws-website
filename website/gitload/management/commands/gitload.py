@@ -29,40 +29,37 @@ class Command(BaseCommand):
         repository.synchronize()
         self.synchronize(repository)
 
+    def synchronize_entry(self, readme_path):
+        entry_path = readme_path.parent
+        entry_slug = entry_path.name
+        entry_meta_path = entry_path / 'meta.json'
+
+        if not entry_meta_path.exists():
+            print(
+                f'Readme {readme_path} lacks meta.json file. '
+                f'Add a meta.json file to the path to include '
+                f'this entry into the application.'
+            )
+            return
+
+        with open(readme_path, 'r') as f:
+            entry_markdown = f.read()
+        with open(entry_meta_path, 'r') as f:
+            entry_meta = json.loads(f.read())
+
+        defaults = {
+            'markdown': entry_markdown,
+            'title': entry_meta['title'],
+            'description': entry_meta['description'],
+            'authors': entry_meta.get('authors'),
+            'tags': entry_meta.get('tags'),
+        }
+
+        _, was_created = Entry.objects.update_or_create(
+            slug=entry_slug,
+            defaults=defaults
+        )
+
     def synchronize(self, repository):
         for readme_path in repository.find_files('**/readme.md'):
-            entry_path = readme_path.parent
-            entry_slug = entry_path.name
-            entry_meta_path = entry_path / 'meta.json'
-
-            if not entry_meta_path.exists():
-                print(
-                    f'Readme {readme_path} lacks meta.json file. '
-                    f'Add a meta.json file to the path to include '
-                    f'this entry into the application.'
-                )
-                continue
-
-            with open(readme_path, 'r') as f:
-                entry_markdown = f.read()
-            with open(entry_meta_path, 'r') as f:
-                entry_meta = json.loads(f.read())
-
-            entry_title = entry_meta['title']
-            entry_description = entry_meta['description']
-            entry_authors = entry_meta.get('authors')
-            entry_tags = entry_meta.get('tags')
-
-            _, was_created = Entry.objects.update_or_create(slug=entry_slug, defaults={
-                'markdown': entry_markdown,
-                'title': entry_title,
-                'description': entry_description,
-                'authors': entry_authors,
-                'tags': entry_tags,
-            })
-
-            print(f'Entry "{entry_title}" {"created" if was_created else "updated"}.')
-
-
-
-
+            self.synchronize_entry(readme_path)

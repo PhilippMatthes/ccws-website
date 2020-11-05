@@ -21,16 +21,13 @@ from django.urls import include, path
 
 from . import views
 
-from djangostatistics.admin import admin_site as statistics_admin_site
-
 from entries import urls as entries_urls
 from api import urls as api_urls
 from gitload import urls as gitload_urls
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    url(r'^statistics/', statistics_admin_site.urls),
 
     path('', views.index),
 

@@ -9,17 +9,18 @@ from django.shortcuts import get_object_or_404
 from django.views.static import serve
 
 from entries.models import Entry
-from djangostatistics.models import Interaction
 
 
+
+"""View a specific blog entry."""
 def index(request, slug):
     entry = get_object_or_404(Entry, slug=slug)
-    Interaction.objects.create(interaction_type=f'Read Entry {entry.title}')
     return TemplateResponse(request, "entries/index.html", {
         "entry": entry
     })
 
 
+"""Serve an attachment for a blog entry."""
 def serve_attachment(request, slug, path):
     if re.search('^(images|attachments)/', path) is None:
         raise PermissionDenied
