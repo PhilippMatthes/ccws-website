@@ -53,6 +53,7 @@ class Command(BaseCommand):
             'description': entry_meta['description'],
             'authors': entry_meta.get('authors'),
             'tags': entry_meta.get('tags'),
+            'thumbnail': entry_meta.get('thumbnail'),
         }
 
         _, was_created = Entry.objects.update_or_create(

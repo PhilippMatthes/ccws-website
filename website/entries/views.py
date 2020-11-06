@@ -15,8 +15,12 @@ from entries.models import Entry
 def index(request, slug):
     """Return a view for a specific blog entry."""
     entry = get_object_or_404(Entry, slug=slug)
-    return TemplateResponse(request, "entries/index.html", {
-        "entry": entry
+    entries = Entry.objects \
+        .order_by('-created') \
+        .exclude(pk=entry.pk)[:2]
+    return TemplateResponse(request, 'entries/index.html', {
+        'entry': entry,
+        'entries': entries,
     })
 
 

@@ -9,16 +9,44 @@
 {% if entry.tags %}{% block tags %}{{entry.tags}}{% endblock %}{% endif %}
 
 {% block header %}
+{% if entry.thumbnail %}
+  <img class="markdown thumbnail"
+      alt="thumbnail"
+      src="{{ entry.thumbnail }}">
+{% endif %}
 <h1>{{ entry.title }}</h1>
 <p class="lead text-light">{{ entry.description }}</p>
+<p class="text-light">Published by <strong>{{ entry.authors }}</strong> {{ entry.created|timesince }} ago</p>
 {% endblock %}
 
 {% block body %}
+
 <div class="container pt-5">
 
 {% if entry %}
   <div class="markdown">
     {{ entry.markdown|markdown }}
+  </div>
+{% endif %}
+
+<p>
+  {% for tag in entry.tags_list %}
+    <span class="badge badge-pill badge-secondary">
+      {{ tag }}
+    </span>
+  {% endfor %}
+</p>
+
+<hr>
+
+{% if entries %}
+  <h5>More Blog Entries for You</h5>
+  <div class="row">
+    {% for entry in entries %}
+    <div class="col-sm-6">
+      {% include 'entries/entry-card.html' %}
+    </div>
+    {% endfor %}
   </div>
 {% endif %}
 

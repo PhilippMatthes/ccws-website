@@ -31,42 +31,7 @@
       <div class="row">
         {% for entry in entries %}
         <div class="col-sm-12">
-          <div class="card mt-4 border-color-scheme-responsive bg-color-scheme-responsive">
-            <div class="card-body">
-              <h3 class="card-title">
-                {% if request.GET.query %}
-                  {{ entry.title|highlight:request.GET.query }}
-                {% else %}
-                  {{ entry.title }}
-                {% endif %}
-              </h3>
-              <p class="card-text">
-                Published by <strong>{{ entry.authors }}</strong> {{ entry.created|timesince }} ago
-              </p>
-              <hr>
-              <p class="card-text">
-                {% if request.GET.query %}
-                  {{ entry.description|highlight:request.GET.query }}
-                {% else %}
-                  {{ entry.description }}
-                {% endif %}
-              </p>
-              <a href="{% url 'entries:index' entry.slug %}"
-                 class="btn btn-primary">Read Blog Entry</a>
-            </div>
-            <div class="card-footer">
-              <p class="card-text">
-                <span class="badge badge-pill bg-color-scheme-responsive">
-                  {{ entry.minutes_to_read }} Minutes Read
-                </span>
-                {% for tag in entry.tags_list %}
-                  <span class="badge badge-pill bg-color-scheme-responsive">
-                    {{ tag }}
-                  </span>
-                {% endfor %}
-              </p>
-            </div>
-          </div>
+          {% include 'entries/entry-card.html' %}
         </div>
         {% endfor %}
       </div>
