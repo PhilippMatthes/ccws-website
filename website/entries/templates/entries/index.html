@@ -2,6 +2,15 @@
 
 {% load markdown %}
 
+{% block extrameta %}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="{{ entry.title }}" />
+<meta name="twitter:description" content="{{ entry.description }}" />
+{% if entry.thumbnail %}
+<meta name="twitter:image" content="{{ entry.thumbnail }}" />
+{% endif %}
+{% endblock %}
+
 {% block title %}{{entry.title}}{% endblock %}
 {% block description %}{{entry.description}}{% endblock %}
 
