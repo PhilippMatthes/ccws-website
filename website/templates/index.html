@@ -13,18 +13,7 @@
 {% block body %}
 
 <div class="container mt-5 mb-5">
-
-  <section id="section-search" class="pt-5">
-    <form method="GET" action="#section-search">
-    <div class="input-group mb-3 mt-5">
-      <input type="text" class="form-control" placeholder="Search for blog entries" name="query"
-             value="{{ request.GET.query }}" aria-label="Search for blog entries">
-      <div class="input-group-append">
-        <button class="btn btn-primary" type="submit">Search</button>
-      </div>
-    </div>
-    </form>
-
+  <section id="section-search" class="pt-2">
     {% if not entries %}
       <h5>There is no article yet in this section.</h5>
     {% else %}

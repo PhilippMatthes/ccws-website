@@ -38,7 +38,7 @@ html {
 
 .header-container .thumbnail {
   max-width: 100%;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   margin-bottom: 1rem;
 }
 
@@ -47,8 +47,8 @@ html {
   background: linear-gradient(294deg, rgba(241,39,17,1) 0%, rgba(245,175,25,1) 100%);
   transform: skewY(8deg);
   margin-top: -10rem;
-  border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .polygon-top-left > * {
@@ -60,7 +60,7 @@ html {
   background: linear-gradient(27deg, rgba(0,198,255,1) 0%, rgba(0,114,255,1) 100%);
   transform: skewY(-8deg);
   margin-top: -12rem;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
 }
 
 .polygon-top-right > * {
@@ -71,7 +71,7 @@ html {
   background-color: #ecf0f1;
 }
 
-.text-color-scheme-responsive {
+.text-color-scheme-responsive, .text-color-scheme-responsive:hover {
   color: #2f3542;
 }
 
@@ -110,7 +110,7 @@ code, .highlighted {
     background-color: #2f3542;
   }
 
-  .text-color-scheme-responsive {
+  .text-color-scheme-responsive, .text-color-scheme-responsive:hover {
     color: #ecf0f1;
   }
 
@@ -161,8 +161,6 @@ code, .highlighted {
 
 .markdown > p {
   margin-top: 1rem;
-  text-align: justify;
-  text-justify: inter-word;
 }
 
 .markdown > h1 {
@@ -196,11 +194,35 @@ code, .highlighted {
   border-radius: 0.5rem;
 }
 
-.markdown img, .markdown .codehilite {
+.markdown img, .markdown .codehilite, .card {
   box-shadow: 0 10px 20px rgba(0,0,0,0.05), 0 6px 6px rgba(0,0,0,0.01);
   transition: all 0.5s cubic-bezier(.25,.8,.25,1);
 }
 
-.markdown img:hover, .markdown .codehilite:hover {
+.markdown img:hover, .markdown .codehilite:hover, .card:hover {
   box-shadow: 0 19px 38px rgba(0,0,0,0.15), 0 15px 12px rgba(0,0,0,0.05);
+}
+
+.card {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
+
+.card > a {
+  text-decoration: none;
+}
+
+.card-img-top {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.card-footer:last-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }

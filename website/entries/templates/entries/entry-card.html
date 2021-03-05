@@ -1,12 +1,11 @@
 {% load highlight %}
 
-<div class="card mt-4 border-color-scheme-responsive bg-color-scheme-responsive">
+<div class="card mt-4 bg-color-scheme-responsive">
+<a href="{% url 'entries:index' entry.slug %}" class="text-color-scheme-responsive">
   {% if entry.thumbnail %}
-    <a href="{% url 'entries:index' entry.slug %}">
-      <img class="card-img-top"
-          alt="thumbnail"
-          src="{% url 'entries:index' entry.slug %}{{ entry.thumbnail }}">
-    </a>
+    <img class="card-img-top"
+        alt="thumbnail"
+        src="{% url 'entries:index' entry.slug %}{{ entry.thumbnail }}">
   {% endif %}
   <div class="card-body">
     <h3 class="card-title">
@@ -27,8 +26,6 @@
         {{ entry.description }}
       {% endif %}
     </p>
-    <a href="{% url 'entries:index' entry.slug %}"
-        class="btn btn-primary">Read Blog Entry</a>
   </div>
   <div class="card-footer">
     <p class="card-text">
@@ -37,4 +34,5 @@
       </span>
     </p>
   </div>
+</a>
 </div>

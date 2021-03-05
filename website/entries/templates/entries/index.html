@@ -30,13 +30,15 @@
 
 {% block body %}
 
-<div class="container pt-5">
-
+<div class="container pt-5 bg-color-scheme-responsive">
 {% if entry %}
   <div class="markdown">
     {{ entry.markdown|markdown }}
   </div>
 {% endif %}
+</div>
+
+<div class="container">
 
 <p>
   {% for tag in entry.tags_list %}
