@@ -1,4 +1,4 @@
-django==2.2.21
+django==2.2.22
 bleach==3.3.0
 Pygments==2.7.4
 huey==2.3.0
